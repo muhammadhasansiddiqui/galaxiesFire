@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import {getAuth} from "firebase/auth";
+// Removed firebase/compat import as it's not needed with modular SDK
 import {getFirestore} from "firebase/firestore";
 
 const firebaseConfig = {
@@ -16,3 +17,5 @@ const firebaseConfig = {
 // Initialize Firebase
 export   const FIREBASE_APP = initializeApp(firebaseConfig);
 export const FIREBASE_AUTH = getAuth(FIREBASE_APP);
+export const FIREBASE_DB = getFirestore(FIREBASE_APP);
+// Removed firebase.auth() and replaced with modular SDK usage

@@ -16,8 +16,12 @@ const InsideStack = createNativeStackNavigator();
 function Inside() {
   return (
     <InsideStack.Navigator>
-      <InsideStack.Screen name="My Chat Room " component={List} />
-      <InsideStack.Screen name="Details" component={Details} />
+      <InsideStack.Screen 
+      name="ChatRoom" 
+      component={List} 
+      options={{ headerShown: false, title: 'Chat Room' }} 
+      />
+      {/* <InsideStack.Screen name="Details" component={Details} /> */}
     </InsideStack.Navigator>
   );
 }

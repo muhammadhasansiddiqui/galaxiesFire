@@ -15,7 +15,9 @@ import {
   Auth,
   createUserWithEmailAndPassword as firebaseCreateUserWithEmailAndPassword,
 } from 'firebase/auth';
-import { FIREBASE_AUTH } from '../../FireBase.config';
+import { FIREBASE_AUTH, FIREBASE_DB } from '../../FireBase.config';
+import { doc, setDoc } from 'firebase/firestore';
+
 import { signInWithPopup, GoogleAuthProvider, FacebookAuthProvider } from 'firebase/auth';
 // import { auth, googleProvider, facebookProvider } from '../../utils/firebase'; // Ensure these are exported
 
@@ -23,7 +25,7 @@ function createUserWithEmailAndPassword(auth: Auth, email: string, password: str
   return firebaseCreateUserWithEmailAndPassword(auth, email, password);
 }
 
-const Signup = () => {
+export const Signup = () => {
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -35,16 +37,26 @@ const Signup = () => {
     try {
       const response = await createUserWithEmailAndPassword(auth, email, password);
       console.log('✅ Signed Up:', response.user.email);
+    
+      const userDocRef = doc(FIREBASE_DB, 'users', response.user.uid);
+      console.log('🧾 Document Ref:', userDocRef.path);
+    
+      await setDoc(userDocRef, {
+        uid: response.user.uid,
+        name: email.split('@')[0],
+        email: response.user.email,
+        createdAt: new Date(),
+      });
+    
+      console.log('✅ Firestore Save Success');
       Alert.alert('Account Created 🎉', 'You can now log in!');
-      navigation.navigate('Login'); // Go to login screen after signup
+      navigation.navigate('Login');
     } catch (error: any) {
+      console.error('❌ Firestore Error:', error.message);
       Alert.alert('Signup Failed', error.message || 'Something went wrong');
-      console.error('Signup Error:', error);
-    } finally {
-      setLoading(false);
     }
   };
-
+  
   const handleGoogleLogin = async () => {
     Alert.alert('Google Login', 'Coming soon...');
  
@@ -121,6 +133,7 @@ const Signup = () => {
 };
 
 export default Signup;
+
 
 const styles = StyleSheet.create({
   container: {
