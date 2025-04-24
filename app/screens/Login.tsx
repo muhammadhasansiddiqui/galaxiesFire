@@ -64,19 +64,23 @@ const Login = () => {
       >
         <Text style={styles.title}>Log in to your account ✨</Text>
 
+{/* lable */}
+        <Text  style={{ color: '#fff', marginBottom: 8, marginLeft: 8 }}>Email</Text>
         <TextInput
           value={email}
           onChangeText={setEmail}
           style={styles.input}
-          placeholder="Email"
+          placeholder="Enter Your Email"
           placeholderTextColor="#aaa"
           autoCapitalize="none"
         />
+
+        <Text  style={{ color: '#fff', marginBottom: 8, marginLeft: 8 }}>Password</Text>
         <TextInput
           value={password}
           onChangeText={setPassword}
           style={styles.input}
-          placeholder="Password"
+          placeholder="Enter Your Password"
           placeholderTextColor="#aaa"
           secureTextEntry
           autoCapitalize="none"
@@ -91,18 +95,13 @@ const Login = () => {
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.socialBtn} onPress={handleGoogleLogin}>
-              {/* <Image source={require('../../assets/google.png')} style={styles.icon} /> */}
+              <Image source={require('../../assets/google-logo.png')} style={styles.icon} />
               <Text style={styles.socialText}>Sign in with Google</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.socialBtn} onPress={handleFbLogin}>
-              {/* <Image source={require('../../assets/facebook.png')} style={styles.icon} /> */}
+              <Image source={require('../../assets/facebook-icon.png')} style={styles.icon} />
               <Text style={styles.socialText}>Sign in with Facebook</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.socialBtn} onPress={handleSMSLogin}>
-              {/* <Image source={require('../../assets/phone.png')} style={styles.icon} /> */}
-              <Text style={styles.socialText}>Sign in with SMS</Text>
             </TouchableOpacity>
 
             <Text style={styles.switchText}>

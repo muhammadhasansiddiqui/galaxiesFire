@@ -9,6 +9,7 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   Platform,
+  Image
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {
@@ -79,20 +80,22 @@ export const Signup = () => {
         style={{ flex: 1, justifyContent: 'center' }}
       >
         <Text style={styles.title}>Create an account ✨</Text>
-
+{/* lable */}
+        <Text  style={{ color: '#fff', marginBottom: 8, marginLeft: 8 }}>Email</Text>
         <TextInput
           value={email}
           onChangeText={setEmail}
           style={styles.input}
-          placeholder="Email"
+          placeholder="Enter Your Email"
           placeholderTextColor="#aaa"
           autoCapitalize="none"
         />
+        <Text  style={{ color: '#fff', marginBottom: 8, marginLeft: 8 }}>Password</Text>
         <TextInput
           value={password}
           onChangeText={setPassword}
           style={styles.input}
-          placeholder="Password"
+          placeholder="Enter Your Password"
           placeholderTextColor="#aaa"
           autoCapitalize="none"
           secureTextEntry
@@ -108,16 +111,20 @@ export const Signup = () => {
 
             {/* Social Login Buttons */}
             <TouchableOpacity style={styles.socialBtn} onPress={handleGoogleLogin}>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Image source={require('../../assets/google-logo.png')} style={styles.icon} />
               <Text style={styles.socialBtnText}>Sign up with Google</Text>
+              </View>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.socialBtn} onPress={handleFacebookLogin}>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <Image source={require('../../assets/facebook-icon.png')} style={styles.icon} />
               <Text style={styles.socialBtnText}>Sign up with Facebook</Text>
+              </View>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.socialBtn} onPress={handlePhoneLogin}>
-              <Text style={styles.socialBtnText}>Sign up with SMS</Text>
-            </TouchableOpacity>
+          
 
             <Text style={styles.switchText}>
               Already have an account?{' '}
@@ -155,6 +162,11 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     borderColor: '#333',
     borderWidth: 1,
+  },
+  icon: {
+    width: 24,
+    height: 24,
+    marginRight: 10,
   },
   signupBtn: {
     backgroundColor: '#ff416c',
