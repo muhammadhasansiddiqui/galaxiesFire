@@ -18,7 +18,6 @@ import { FIREBASE_AUTH, FIREBASE_DB } from "../../FireBase.config";
 import useMessages from "../../utils/useMessages";
 import sendMessage from "../../utils/sendMessage";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 import IonIcon from "react-native-vector-icons/Ionicons";
 import { onAuthStateChanged } from "firebase/auth";
 
@@ -68,17 +67,28 @@ const GroupChatComponent = () => {
     <View style={styles.container}>
       {user ? (
         <View style={styles.chatContainer}>
-          <View style={styles.header}>
-            <Text style={styles.headerTitle}>Group Chat</Text>
+            <View style={styles.header}>
+            <View style={{ flexDirection: "row", alignItems: "center" }}>
+              <Image
+              source={{
+                uri: 'https://media.licdn.com/dms/image/v2/D4D0BAQEGF96a9vz2pg/company-logo_100_100/company-logo_100_100/0/1735581566408/codessavvy_logo?e=1750896000&v=beta&t=7fZTT49i1LCDftC7obGCJtKq2Dq83aATh8P4m-oEvyE',
+              }}
+              style={{ width: 40, height: 40, borderRadius: 20, marginRight: 10 }}
+              />
+              <Text style={styles.headerTitle}>Group Chat</Text>
+            </View>
             <View style={styles.headerIcons}>
+              <TouchableOpacity>
               <Icon name="call" size={20} color="white" />
+              </TouchableOpacity>
+              <TouchableOpacity>
               <Icon name="videocam" size={24} color="white" />
-              {/* <FontAwesomeIcon name="smile-o" size={20} color="white" /> */}
+              </TouchableOpacity>
               <TouchableOpacity onPress={() => setMenuVisible(!menuVisible)}>
-                <IonIcon name="ellipsis-vertical" size={24} color="white" />
+              <IonIcon name="ellipsis-vertical" size={24} color="white" />
               </TouchableOpacity>
             </View>
-          </View>
+            </View>
           {menuVisible && (
   <View style={styles.menuContainer}>
     <TouchableOpacity onPress={handleLogout} style={styles.menuItem}>

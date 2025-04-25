@@ -11,6 +11,8 @@ import {
   Platform,
   Image,
 } from 'react-native';
+import { Link } from 'expo-router';
+
 import { useNavigation } from '@react-navigation/native';
 import {
   Auth,
@@ -106,9 +108,10 @@ const Login = () => {
 
             <Text style={styles.switchText}>
               Don't have an account?{' '}
-              <Text style={styles.linkText} onPress={() => navigation.navigate('Signup')}>
-                Sign Up
-              </Text>
+              <TouchableOpacity onPress={() => navigation.navigate('Signup' as never)}>
+  <Text style={styles.linkText}>Sign Up</Text>
+</TouchableOpacity>
+
             </Text>
           </>
         )}
@@ -168,8 +171,8 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   socialText: {
-    color: '#fff',
-    fontSize: 16,
+    color: "#fff",
+    fontWeight: "bold",
   },
   switchText: {
     color: '#aaa',
