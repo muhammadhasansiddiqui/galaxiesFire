@@ -20,7 +20,8 @@ const sendMessage = async (text: string, user: UserType): Promise<void> => {
       timestamp: serverTimestamp(),
     });
   } catch (error) {
-    console.error('Error sending message:', error);
+    
+    // console.error('Error sending message:', error);
   }
 };
 
