@@ -50,10 +50,10 @@ export const Signup = () => {
         email,
         password
       );
-      console.log("✅ Signed Up:", response.user.email);
+      // console.log("✅ Signed Up:", response.user.email);
 
       const userDocRef = doc(FIREBASE_DB, "users", response.user.uid);
-      console.log("🧾 Document Ref:", userDocRef.path);
+      // console.log("🧾 Document Ref:", userDocRef.path);
 
       await setDoc(userDocRef, {
         uid: response.user.uid,
@@ -62,7 +62,7 @@ export const Signup = () => {
         createdAt: new Date(),
       });
 
-      console.log("✅ Firestore Save Success");
+      // console.log("✅ Firestore Save Success");
       Linking.openURL("Login");
       // navigation.navigate('Login');
     } catch (error: any) {
