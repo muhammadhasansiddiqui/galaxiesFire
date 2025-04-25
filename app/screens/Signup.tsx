@@ -131,7 +131,7 @@ export const Signup = () => {
             >
               <View style={{ flexDirection: "row", alignItems: "center" }}>
                 <Image
-                  source={require("../../assets/google-logo.png")}
+                  source={require("../../assets/googlelogo.png")}
                   style={styles.icon}
                 />
                 <Text style={styles.socialBtnText}>Sign up with Google</Text>

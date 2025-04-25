@@ -97,7 +97,7 @@ const Login = () => {
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.socialBtn} onPress={handleGoogleLogin}>
-              <Image source={require('../../assets/google-logo.png')} style={styles.icon} />
+              <Image source={require('../../assets/googlelogo.png')} style={styles.icon} />
               <Text style={styles.socialText}>Sign in with Google</Text>
             </TouchableOpacity>
 
