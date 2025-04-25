@@ -35,12 +35,12 @@ const Login = () => {
     setLoading(true);
     try {
       const response = await signInWithEmailAndPassword(auth, email, password);
-      console.log('✅ Signed In:', response.user.email);
+      // console.log('✅ Signed In:', response.user.email);
       Alert.alert('Welcome Back 👋', 'You are now logged in!');
       // You can navigate to your home/chat screen here
     } catch (error: any) {
       Alert.alert('Login Failed', error.message || 'Something went wrong');
-      console.error('Login Error:', error);
+      // console.error('Login Error:', error);
     } finally {
       setLoading(false);
     }

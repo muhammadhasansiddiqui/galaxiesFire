@@ -59,7 +59,8 @@ const GroupChatComponent = () => {
     try {
       await FIREBASE_AUTH.signOut();
     } catch (error) {
-      console.error("Logout failed:", error);
+      alert("Logout failed. Please try again.");
+      // console.error("Logout failed:", error);
     }
   };
 
@@ -277,18 +278,29 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 60,
     right: 16,
-    backgroundColor: "#222",
-    borderRadius: 8,
-    padding: 10,
+    backgroundColor: "#1c1c1e",
+    borderRadius: 12,
+    paddingVertical: 12,
+    paddingHorizontal: 10,
     zIndex: 999,
-    elevation: 5,
+    elevation: 7,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.25,
+    shadowRadius: 6,
+    minWidth: 160,
   },
   menuItem: {
-    paddingVertical: 8,
-    paddingHorizontal: 12,
+    paddingVertical: 12,
+    paddingHorizontal: 14,
+    borderBottomColor: "#333",
+    borderBottomWidth: 0.6,
   },
   menuText: {
-    color: "white",
+    color: "#f2f2f2",
+    fontSize: 15,
+    fontWeight: "500",
+    letterSpacing: 0.3,
   },
 });
 
